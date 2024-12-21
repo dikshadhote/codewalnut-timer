@@ -11,10 +11,11 @@ function Home() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Toaster position="top-right" />
       <div className="container mx-auto px-4 py-8">
-        <div>
-          <div className="flex items-center gap-3">
+        {/* This will ensure that the Timer and Add Timer button are aligned to the left and right respectively. */}
+        <div className="flex justify-between items-center "> 
+          <div className="flex items-center  gap-3">
             <Clock className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">Timer</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Timer App</h1>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
