@@ -33,7 +33,8 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
             duration: 5000,
             action: {
               label: 'Dismiss',
-              onClick: timerAudio.stop,
+              // this context is bind to the TimerAudio instance
+              onClick: timerAudio.stop.bind(timerAudio), 
             },
           });
         }
