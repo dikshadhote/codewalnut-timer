@@ -1,5 +1,13 @@
 # Timer App Assignment
 
+App demo :
+
+
+https://github.com/user-attachments/assets/5cd00e5a-0bbb-4572-bac0-97e401023979
+
+
+
+
 ## **Project Setup**
 
 1. Clone the repository:  
