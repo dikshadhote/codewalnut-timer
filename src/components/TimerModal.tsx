@@ -130,7 +130,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({
               onChange={(e) => setTitle(e.target.value)}
               onBlur={() => setTouched({ ...touched, title: true })}
               maxLength={50}
-              className={`w-full px-3 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+              className={`w-full px-3 py-2 border rounded-md shadow-sm  focus:ring-blue-500 focus:border-blue-500 ${
                 touched.title && !isTitleValid ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="Enter timer title"
@@ -149,7 +149,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm  focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter timer description (optional)"
             />
           </div>
@@ -168,7 +168,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({
                   value={hours}
                   onChange={(e) => setHours(Math.min(23, parseInt(e.target.value) || 0))}
                   onBlur={() => setTouched({ ...touched, hours: true })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm  focus:ring-blue-500"
                 />
               </div>
               <div>
@@ -180,7 +180,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({
                   value={minutes}
                   onChange={(e) => setMinutes(Math.min(59, parseInt(e.target.value) || 0))}
                   onBlur={() => setTouched({ ...touched, minutes: true })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm  focus:ring-blue-500"
                 />
               </div>
               <div>
@@ -192,7 +192,7 @@ export const TimerModal: React.FC<TimerModalProps> = ({
                   value={seconds}
                   onChange={(e) => setSeconds(Math.min(59, parseInt(e.target.value) || 0))}
                   onBlur={() => setTouched({ ...touched, seconds: true })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm  focus:ring-blue-500"
                 />
               </div>
             </div>
