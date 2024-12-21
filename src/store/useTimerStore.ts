@@ -1,9 +1,12 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
 import { Timer } from '../types/timer';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadTimersFromLocalStorage, saveTimersToLocalStorage } from '../utils/localStorageTimer';
+
+
 
 const initialState = {
-  timers: [] as Timer[],
+  timers: loadTimersFromLocalStorage() as Timer[],
 };
 
 const timerSlice = createSlice({
@@ -11,19 +14,23 @@ const timerSlice = createSlice({
   initialState,
   reducers: {
     addTimer: (state, action) => {
-      state.timers.push({
+      const newTimer = {
         ...action.payload,
         id: crypto.randomUUID(),
         createdAt: Date.now(),
-      });
+      };
+      state.timers.push(newTimer);
+      saveTimersToLocalStorage(state.timers);  // Save after adding
     },
     deleteTimer: (state, action) => {
       state.timers = state.timers.filter(timer => timer.id !== action.payload);
+      saveTimersToLocalStorage(state.timers);  // Save after deleting
     },
     toggleTimer: (state, action) => {
       const timer = state.timers.find(timer => timer.id === action.payload);
       if (timer) {
         timer.isRunning = !timer.isRunning;
+        saveTimersToLocalStorage(state.timers);  // Save after toggling
       }
     },
     updateTimer: (state, action) => {
@@ -31,6 +38,7 @@ const timerSlice = createSlice({
       if (timer && timer.isRunning) {
         timer.remainingTime -= 1;
         timer.isRunning = timer.remainingTime > 0;
+        saveTimersToLocalStorage(state.timers);  // Save after updating
       }
     },
     restartTimer: (state, action) => {
@@ -38,6 +46,7 @@ const timerSlice = createSlice({
       if (timer) {
         timer.remainingTime = timer.duration;
         timer.isRunning = false;
+        saveTimersToLocalStorage(state.timers);  // Save after restarting
       }
     },
     editTimer: (state, action) => {
@@ -46,6 +55,7 @@ const timerSlice = createSlice({
         Object.assign(timer, action.payload.updates);
         timer.remainingTime = action.payload.updates.duration || timer.duration;
         timer.isRunning = false;
+        saveTimersToLocalStorage(state.timers);  // Save after editing
       }
     },
   },
