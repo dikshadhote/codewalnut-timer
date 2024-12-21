@@ -30,6 +30,7 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
           timerAudio.play().catch(console.error);
 
           toast.success(`Timer "${timer.title}" has ended!`, {
+            position: window.innerWidth < 768 ? 'bottom-center' : 'top-right',
             duration: 5000,
             action: {
               label: 'Dismiss',
